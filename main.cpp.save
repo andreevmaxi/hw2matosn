@@ -1,7 +1,8 @@
 #include <cstdio>
 #include <cassert>
+#include <cstdlib>
 
-#ifdef VORONEZH
+#ifdef _VORONEZH
     #define CALL printf
 #else
     #define CALL if(0) printf
@@ -15,24 +16,27 @@ int main()
 {
     char operation = {};
     unsigned long long n,k;
-    CALL("Hello, zemlyak, enter your operation and two integers, used in this operation");
-    scanf("%c %llu %llu", &operation, &n, &k);
+    CALL("Hello, zemlyak, enter your operation and two integers, used in this operation\n");
+
+    FILE* f = fopen("input.txt", "r");
+    fscanf(f, "%c %llu %llu", &operation, &n, &k);
 
     assert(n != 0);
     assert(k != 0);
 
+    f = fopen("output.txt", "w");
     switch (operation)
     {
         case 'C':
             CALL("Number of combinations of k in n: ");
-            printf("%llu", combinations(n, k));
+            fprintf(f, "%llu", combinations(n, k));
             break;
         case 'A':
             CALL("Number of allocations of k in n: ");
-            printf("%llu", allocation(n, k));
+            fprintf(f, "%llu", allocation(n, k));
             break;
         default:
-            printf("error");
+            fprintf(f, "error");
     }
     CALL("\nThank you for reading this code!");
 
@@ -69,24 +73,45 @@ unsigned long long combinations(unsigned long long n, unsigned long long k)
         k = (n - k);
     }
 
-    unsigned long long* FactorArray = (long long*)calloc((n - tmp), sizeof(unsigned long long));
+    unsigned long long* FactorArray = (unsigned long long*)calloc((n - tmp), sizeof(unsigned long long));
+    unsigned long long* FactorialOfKArray = (unsigned long long*)calloc(k, sizeof(unsigned long long));
+
     int i = 0; // index integer of FactorArray
 
     for (unsigned long long CounterFactorial = n; CounterFactorial > tmp; --CounterFactorial)
     {
         *(FactorArray + i) = CounterFactorial;
+        ++i;
+    }
 
-        printf("%llu\n", answer);
+    for (int j = 0; j < k; ++j)
+    {
+        *(FactorialOfKArray + j) = j + 2;
+    }
 
-        while (DivideTmp < k && answer % DivideTmp == 0) // doing ans/k! or ans/(n - k)! if k > (n - k)
+    for (i = 0; i < (n - tmp); ++i)
+    {
+        for (int j = 0; j < k - 1; ++j)
         {
-            answer /= DivideTmp;
-            ++DivideTmp;
+            unsigned long long tmp = *(FactorialOfKArray + j);
+
+            while(*(FactorialOfKArray + j) != 1 && tmp > 1)
+            {
+                if(*(FactorialOfKArray + j) % tmp == 0 && *(FactorArray + i) % tmp == 0)
+                {
+                    *(FactorArray + i)       /= tmp; // doing ans/k! or ans/(n - k)! if k > (n - k)
+                    *(FactorialOfKArray + j) /= tmp;
+                }
+
+                --tmp;
+            }
         }
 
-        answer *= (CounterFactorial); // doing n!/(n - k)! or n!/k! if k > (n - k)
+        answer *= (*(FactorArray + i)); // doing n!/(n - k)! or n!/k! if k > (n - k)
     }
-    for (uns)
+
+    free(FactorArray);
+    free(FactorialOfKArray);
 
     return answer;
 }

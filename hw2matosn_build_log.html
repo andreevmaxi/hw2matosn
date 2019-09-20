@@ -4,40 +4,52 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
 <tt>
-Build started on: <u>18-09-2019 at 21:15.42</u><br />
-Build ended on: <u>18-09-2019 at 21:15.42</u><p />
+Build started on: <u>20-09-2019 at 23:49.25</u><br />
+Build ended on: <u>20-09-2019 at 23:49.26</u><p />
 <b>-------------- Build: Debug in hw2matosn (compiler: GNU GCC Compiler - Strict + Fast (SINGLE FILES ONLY))---------------</b><br />
-mingw32-g++.exe "C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp" -o bin\Debug\hw2matosn.exe -mconsole  -Wall -fexceptions  -g  -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline -Wunreachable-code -Wmissing-declarations -Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra -Wall -g -pipe -fexceptions -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wformat-security -Wformat=2 -Wignored-qualifiers -Wlogical-op -Wmissing-field-initializers -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -D_DEBUG -D_EJUDGE_CLIENT_SIDE -D_EJC<br />
+mingw32-g++.exe "C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp" -o bin\Debug\hw2matosn.exe -mconsole  -Wall -fexceptions  -g  -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline -Wunreachable-code -Wmissing-declarations -Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra -Wall -g -pipe -fexceptions -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wformat-security -Wformat=2 -Wignored-qualifiers -Wlogical-op -Wmissing-field-initializers -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -D_DEBUG -D_EJUDGE_CLIENT_SIDE -D_EJC -D_VORONEZH<br />
 C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp: In function 'int main()':<br />
-<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:12:41: warning: format '%d' expects argument of type 'int*', but argument 3 has type 'long long unsigned int*' [-Wformat=]</font><br />
-     scanf("%c %d %d", &amp;operation, &amp;n, &amp;k);<br />
-                                         ^<br />
-<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:12:41: warning: format '%d' expects argument of type 'int*', but argument 4 has type 'long long unsigned int*' [-Wformat=]</font><br />
-<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:20:43: warning: conversion to 'unsigned int' from 'long long unsigned int' may alter its value [-Wconversion]</font><br />
-             printf("%d", combinations(n, k));<br />
-                                           ^<br />
-<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:20:43: warning: conversion to 'unsigned int' from 'long long unsigned int' may alter its value [-Wconversion]</font><br />
-<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:20:44: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long long unsigned int' [-Wformat=]</font><br />
-             printf("%d", combinations(n, k));<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:22:45: warning: unknown conversion type character 'l' in format [-Wformat=]</font><br />
+     scanf("%c %llu %llu", &amp;operation, &amp;n, &amp;k);<br />
+                                             ^<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:22:45: warning: unknown conversion type character 'l' in format [-Wformat=]</font><br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:22:45: warning: too many arguments for format [-Wformat-extra-args]</font><br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:32:46: warning: unknown conversion type character 'l' in format [-Wformat=]</font><br />
+             printf("%llu", combinations(n, k));<br />
+                                              ^<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:32:46: warning: too many arguments for format [-Wformat-extra-args]</font><br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:36:44: warning: unknown conversion type character 'l' in format [-Wformat=]</font><br />
+             printf("%llu", allocation(n, k));<br />
                                             ^<br />
-<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:23:42: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long long unsigned int' [-Wformat=]</font><br />
-             printf("%d", allocation(n, k));<br />
-                                          ^<br />
-C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp: In function 'long long unsigned int allocation(long long unsigned int, long long unsigned int)':<br />
-<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:38:21: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long long unsigned int' [-Wformat=]</font><br />
-     printf("%d", tmp);<br />
-                     ^<br />
-<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:42:78: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long long unsigned int' [-Wformat=]</font><br />
-         printf("%d %d %d\n", CounterFactorial, (CounterFactorial &gt; tmp), tmp );<br />
-                                                                              ^<br />
-<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:42:78: warning: format '%d' expects argument of type 'int', but argument 4 has type 'long long unsigned int' [-Wformat=]</font><br />
-C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp: In function 'long long unsigned int combinations(unsigned int, unsigned int)':<br />
-<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:67:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]</font><br />
-     for (int i = 2; i &lt; k; ++i)<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:36:44: warning: too many arguments for format [-Wformat-extra-args]</font><br />
+C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp: In function 'long long unsigned int combinations(long long unsigned int, long long unsigned int)':<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:76:70: warning: conversion to 'size_t {aka unsigned int}' from 'long long unsigned int' may alter its value [-Wconversion]</font><br />
+     unsigned long long* FactorArray = (unsigned long long*)calloc((n - tmp), sizeof(unsigned long long));<br />
+                                                                      ^<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:77:102: warning: conversion to 'size_t {aka unsigned int}' from 'long long unsigned int' may alter its value [-Wconversion]</font><br />
+     unsigned long long* FactorialOfKArray = (unsigned long long*)calloc(k, sizeof(unsigned long long));<br />
+                                                                                                      ^<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:89:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]</font><br />
+     for (int j = 1; j &lt; k; ++j)<br />
                          ^<br />
-Output size is 37,49 KB<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:94:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]</font><br />
+     for (i = 0; i &lt; (n - tmp); ++i)<br />
+                             ^<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:96:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]</font><br />
+         for (int j = 0; j &lt; k; ++j)<br />
+                             ^<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:98:32: warning: declaration of 'tmp' shadows a previous local [-Wshadow]</font><br />
+             unsigned long long tmp = *(FactorialOfKArray + j);<br />
+                                ^<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:64:24: warning: shadowed declaration is here [-Wshadow]</font><br />
+     unsigned long long tmp = 0;<br />
+                        ^<br />
+<font color="#0000ff">C:\Users\Maksim\Documents\GitHub\hw2matosn\main.cpp:65:24: warning: unused variable 'DivideTmp' [-Wunused-variable]</font><br />
+     unsigned long long DivideTmp = 2;<br />
+                        ^<br />
+Output size is 45,13 KB<br />
 <font color="#0000ff">Process terminated with status 0 (0 minutes, 0 seconds)</font><br />
-<font color="#0000ff">0 errors, 10 warnings (0 minutes, 0 seconds)</font><br />
+<font color="#0000ff">0 errors, 15 warnings (0 minutes, 0 seconds)</font><br />
 </tt>
 </body>
 </html>

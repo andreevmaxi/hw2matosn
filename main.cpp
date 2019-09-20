@@ -17,23 +17,23 @@ int main()
     char operation = {};
     unsigned long long n,k;
     CALL("Hello, zemlyak, enter your operation and two integers, used in this operation\n");
-    scanf("%c %llu %llu", &operation, &n, &k);
 
-    assert(n != 0);
-    assert(k != 0);
+    FILE* f = fopen("input.txt", "r");
+    fscanf(f, "%c %llu %llu", &operation, &n, &k);
 
+    f = fopen("output.txt", "w");
     switch (operation)
     {
         case 'C':
             CALL("Number of combinations of k in n: ");
-            printf("%llu", combinations(n, k));
+            fprintf(f, "%llu", combinations(n, k));
             break;
         case 'A':
             CALL("Number of allocations of k in n: ");
-            printf("%llu", allocation(n, k));
+            fprintf(f, "%llu", allocation(n, k));
             break;
         default:
-            printf("error");
+            fprintf(f, "error");
     }
     CALL("\nThank you for reading this code!");
 
@@ -71,34 +71,38 @@ unsigned long long combinations(unsigned long long n, unsigned long long k)
     }
 
     unsigned long long* FactorArray = (unsigned long long*)calloc((n - tmp), sizeof(unsigned long long));
-    unsigned long long* FactorialOfKArray = (unsigned long long*)calloc(k - 1, sizeof(unsigned long long));
+    unsigned long long* FactorialOfKArray = (unsigned long long*)calloc(k, sizeof(unsigned long long));
 
     int i = 0; // index integer of FactorArray
 
     for (unsigned long long CounterFactorial = n; CounterFactorial > tmp; --CounterFactorial)
     {
         *(FactorArray + i) = CounterFactorial;
-        CALL("FactorArray: %llu %d\n", *(FactorArray + i), i);
         ++i;
     }
 
-    for (int j = 0; j < k - 1; ++j)
-    {
-        *(FactorialOfKArray + j) = j + 2;
-        CALL("FactorialOfKArray: %llu %d\n", *(FactorialOfKArray + j), j);
-    }
+    *(FactorialOfKArray) = 1;
 
-    CALL("\n");
+    for (int j = 1; j < k; ++j)
+    {
+        *(FactorialOfKArray + j) = j + 1;
+    }
 
     for (i = 0; i < (n - tmp); ++i)
     {
-        for (int j = 0; j < k - 1; ++j)
+        for (int j = 0; j < k; ++j)
         {
-            if(*(FactorialOfKArray + j) != 0 && *(FactorArray + i) % *(FactorialOfKArray + j) == 0)
+            unsigned long long tmp = *(FactorialOfKArray + j);
+
+            while(*(FactorialOfKArray + j) != 1 && tmp > 1)
             {
-                CALL("%llu %llu\n", *(FactorArray + i), *(FactorialOfKArray + j));
-                *(FactorArray + i) /= *(FactorialOfKArray + j); // doing ans/k! or ans/(n - k)! if k > (n - k)
-                *(FactorialOfKArray + j) = 0;
+                if(*(FactorialOfKArray + j) % tmp == 0 && *(FactorArray + i) % tmp == 0)
+                {
+                    *(FactorArray + i)       /= tmp; // doing ans/k! or ans/(n - k)! if k > (n - k)
+                    *(FactorialOfKArray + j) /= tmp;
+                }
+
+                --tmp;
             }
         }
 
