@@ -1,42 +1,52 @@
 #include <cstdio>
 #include <cassert>
 
-unsigned long long allocation(unsigned int n, unsigned int k);
+#ifdef VORONEZH
+    #define CALL printf
+#else
+    #define CALL if(0) printf
+#endif
 
-unsigned long long combinations(unsigned int n, unsigned int k);
+unsigned long long   allocation(unsigned long long n, unsigned long long k);
+
+unsigned long long combinations(unsigned long long n, unsigned long long k);
 
 int main()
 {
     char operation = {};
-    unsigned int n,k;
-    scanf("%c %d %d", &operation, &n, &k);
+    unsigned long long n,k;
+    CALL("Hello, zemlyak, enter your operation and two integers, used in this operation");
+    scanf("%c %llu %llu", &operation, &n, &k);
 
     assert(n != 0);
     assert(k != 0);
 
     switch (operation)
     {
-        case 'Ñ':
-            printf("%d", combinations(n, k));
+        case 'C':
+            CALL("Number of combinations of k in n: ");
+            printf("%llu", combinations(n, k));
             break;
         case 'A':
-            printf("%d", allocation(n, k));
+            CALL("Number of allocations of k in n: ");
+            printf("%llu", allocation(n, k));
             break;
         default:
             printf("error");
     }
+    CALL("\nThank you for reading this code!");
 
     return 0;
 }
 
 
-unsigned long long allocation(unsigned int n, unsigned int k)
+unsigned long long allocation(unsigned long long n, unsigned long long k)
 {
     assert(n > k);
-    long long answer = 1;
-    int tmp = n - k;
+    unsigned long long answer = 1;
+    unsigned long long tmp = n - k;
 
-    for (long long CounterFactorial = (long long)n; CounterFactorial > tmp; --CounterFactorial)
+    for (unsigned long long CounterFactorial = n; CounterFactorial > tmp; --CounterFactorial)
     {
         answer *= CounterFactorial;
     }
@@ -44,12 +54,13 @@ unsigned long long allocation(unsigned int n, unsigned int k)
     return answer;
 }
 
-unsigned long long combinations(unsigned int n, unsigned int k)
+unsigned long long combinations(unsigned long long n, unsigned long long k)
 {
-    long long answer = 1;
-    int tmp = 0;
+    unsigned long long answer = 1;
+    unsigned long long tmp = 0;
+    unsigned long long DivideTmp = 2;
 
-    if(k < (n - k))
+    if(k < (n - k))  //swaps k and (n - k) to use it in n!/k!*(n - k)!
     {
         tmp = (n - k);
     } else
@@ -58,14 +69,24 @@ unsigned long long combinations(unsigned int n, unsigned int k)
         k = (n - k);
     }
 
-    for (int CounterFactorial = 0; CounterFactorial < tmp; ++CounterFactorial)
+    unsigned long long* FactorArray = (long long*)calloc((n - tmp), sizeof(unsigned long long));
+    int i = 0; // index integer of FactorArray
+
+    for (unsigned long long CounterFactorial = n; CounterFactorial > tmp; --CounterFactorial)
     {
-        answer *= (n - CounterFactorial);
+        *(FactorArray + i) = CounterFactorial;
+
+        printf("%llu\n", answer);
+
+        while (DivideTmp < k && answer % DivideTmp == 0) // doing ans/k! or ans/(n - k)! if k > (n - k)
+        {
+            answer /= DivideTmp;
+            ++DivideTmp;
+        }
+
+        answer *= (CounterFactorial); // doing n!/(n - k)! or n!/k! if k > (n - k)
     }
-    for (int i = 2; i < k; ++i)
-    {
-        answer /= i;
-    }
+    for (uns)
 
     return answer;
 }
